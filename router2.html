@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/vue.2.6.12.min.js"></script>
+<script src="js/vue-router.js"></script>
+<div id="app">
+    <a href="" v-on:click.prevent="login">登录组件</a>
+    <a href="" v-on:click.prevent="reg">注册组件</a>
+
+    <user-login v-if="isloginshow"></user-login>
+    <user-reg v-if="isregshow"></user-reg>
+</div>
+</body>
+</html>
+<script>
+    // vue组件user-login
+ Vue.component("user-login",{
+     template:"<h1>登录</h1>"
+ });
+    // vue组件user-reg
+    Vue.component("user-reg",{
+        template:"<h1>注册</h1>"
+    });
+    //vue实列
+    new Vue({   //挂载点
+        el:"#app",
+        data:{  //数据
+          isloginshow:false,
+          isregshow:false
+        },
+        //方法
+        methods:{
+          login(){  //点击事件
+              this.isregshow=false;
+              this.isloginshow=true
+          }  ,
+            reg(){   //点击事件
+              this.isloginshow=false;
+              this.isregshow=true
+            },
+        },
+    })
+
+</script>
